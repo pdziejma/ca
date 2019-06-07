@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <p1><%= paragraph %></p1>
+        <div>
+            <label>Animal Database:</label>
+        </div>
+        <select id = "animalSel"></select>
+        <script type="text/javascript">
+            var get_animals = <%- JSON.stringify(animaldata) %>
+        </script>
+        <script type = "text/javascript" src = "js/idx.js"</source></script>
+    </body>
+</html>
