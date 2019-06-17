@@ -18,7 +18,7 @@ exports.render = function(req, res) {
 
     res.render('index', {
         title: 'Animal Database',
-        paragraph: 'Type animals at end of url to see all animals in database or id to see a specific animal with that id.',
+        paragraph: 'Type in an animal to add to the database.',
         animaldata: animal
     });
 };

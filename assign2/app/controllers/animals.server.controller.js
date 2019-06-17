@@ -37,3 +37,23 @@ exports.animalByID = function(req, res, next, id) {
         }
     });
 };
+
+exports.update = function(req, res, next) {
+    Animal.findByIdAndUpdate(req.animal.id, req.body, function(err, animal) {
+        if (err) {
+            return next(err);
+        } else {
+            res.json(animal);
+        }
+    });
+};
+
+exports.delete = function(req, res, next) {
+    req.animal.remove(function(err) {
+        if (err) {
+            return next(err);
+        } else {
+            res.json(req.animal);
+        }
+    })
+};
