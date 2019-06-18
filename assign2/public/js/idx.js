@@ -59,7 +59,7 @@ for (let i = 0; i < col_count; i++) {
     row.appendChild(head_cell);
 }
 //filling table with data
-for(let i = 0; i < get_animals.length; i++) {
+for (let i = 0; i < get_animals.length; i++) {
     row = table.insertRow(-1);
     var cell = row.insertCell(-1);
     cell.innerHTML = get_animals[i].name;
@@ -70,41 +70,16 @@ for(let i = 0; i < get_animals.length; i++) {
     cell = row.insertCell(-1);
     cell.innerHTML = get_animals[i].dob;
 }
-//add new rows to table
+
+//create form
+
+//adding to db
 function addAnimal() {
-    var animal_table = document.getElementById("animTable");
-    var curr_row = animal_table.insertRow(-1);
-    
-    var name_box = document.createElement("input");
-    name_box.setAttribute("name", "name");
-
-    var color_box = document.createElement("input");
-    color_box.setAttribute("name", "color");
-
-    var size_box = document.createElement("input");
-    size_box.setAttribute("name", "size");
-
-    var dob_box = document.createElement("input");
-    dob_box.setAttribute("name", "dob");
-
-    var add_row = document.createElement("button");
-    add_row.setAttribute("type", "submit");
-    add_row.setAttribute("onclick", "addAnimal();");
-    add_row.innerHTML = "Add";
-
-    var curr_cell = curr_row.insertCell(-1);
-    curr_cell.appendChild(name_box);
-
-    curr_cell = curr_row.insertCell(-1);
-    curr_cell.appendChild(color_box);
-
-    curr_cell = curr_row.insertCell(-1);
-    curr_cell.appendChild(size_box);
-
-    curr_cell = curr_row.insertCell(-1);
-    curr_cell.appendChild(dob_box);
-
-    curr_cell = curr_row.insertCell(-1);
-    curr_cell.appendChild(add_row);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("pid").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("POST", "/animals", true);
+    xhttp.send();
 }
-window.onload = addAnimal();

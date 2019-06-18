@@ -14,14 +14,26 @@
         <p id = "p1">
                 Select an animal to see its description.
         </p>
+
         <div>
             <p1><%= paragraph %></p1>
         </div>
+
         <div>
-            <form action = "/animals" method = "post">
-                <div id = "dynamicTable"></div>
+            <form action = "/animals" method = "post" onsubmit="addAnimal();">
+                <input type="text" name="name">
+                <input type="text" name="color">
+                <input type="text" name="size">
+                <input type="submit" value="Submit">
             </form>
         </div>
+
+        <div>
+            <p1 id = "pid"></p1>
+        </div>
+
+        <div id = "dynamicTable"></div>
+
         <script type ="text/javascript"></script>
         <script type = "text/javascript" src = "js/idx.js"</source></script>
     </body>
