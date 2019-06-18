@@ -1,3 +1,13 @@
+var get_animals;
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        get_animals = JSON.parse(this.responseText);
+    }
+};
+xhttp.open("GET", '/animals', false);
+xhttp.send();
+
 //replaces p1 with text for selected animal
 function getDesc() {
     const sel = document.getElementById("select");
@@ -12,7 +22,6 @@ function getDesc() {
         " sized, " + get_animals[ind].color.toLowerCase() + " colored animal.";
     }
 }
-
 //set up for dropdown
 let option, txt;
 const newSelect = document.createElement("select");

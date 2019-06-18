@@ -7,7 +7,7 @@
         <h1><%= title %></h1>
         <label>List of Animals:</label>
 
-        <form class="new" action="/jobs" method="post">
+        <form class="new" method="post">
             <div id="dynamicInput"></div>
         </form>
 
@@ -18,29 +18,11 @@
             <p1><%= paragraph %></p1>
         </div>
         <div>
-            <!--
-            <p1>Name Color Size</p1>
-            -->
-            <form action = "/" method = "post">
+            <form action = "/animals" method = "post">
                 <div id = "dynamicTable"></div>
-                <!--
-                <input type = "text" name = "name">
-                <input type = "text" name = "color">
-                <input type = "text" name = "size">
-                <button type = "submit" onclick = "addAnimal();"> Add </button>
-                -->
             </form>
-            <!--
-            <form action = "/deleted" method = "post">
-                <input type = "text" name = "name">
-                <button type = "submit"> Delete </button>
-            </form>
-            -->
         </div>
-
-        <script type ="text/javascript">
-            var get_animals = <%- JSON.stringify(animaldata) %>
-        </script>
+        <script type ="text/javascript"></script>
         <script type = "text/javascript" src = "js/idx.js"</source></script>
     </body>
 </html>
