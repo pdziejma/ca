@@ -72,6 +72,7 @@ for (let i = 0; i < get_animals.length; i++) {
 }
 
 //create form
+document.getElementById("submit btn").addEventListener("click", addAnimal());
 
 //adding to db
 function addAnimal() {
