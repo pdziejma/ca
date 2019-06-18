@@ -71,7 +71,7 @@ for (let i = 0; i < get_animals.length; i++) {
     cell.innerHTML = get_animals[i].dob;
 }
 
-//create form
+//event listener for form
 document.getElementById("submit btn").addEventListener("click", addAnimal());
 
 //adding to db
