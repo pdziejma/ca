@@ -6,7 +6,7 @@ exports.create = function(req, res, next) {
         if (err) {
             return next(err);
         } else {
-            res.json(animal);
+            res.redirect('/');
         }
     });
 };
