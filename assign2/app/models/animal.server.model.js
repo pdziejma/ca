@@ -3,22 +3,18 @@ var mongoose = require('mongoose'),
  //schema for animal    
 var AnimalSchema = new Schema({
     name: {
-        type: String,
-        trim: true,
-        required: true
+        type: String
     },
     color: {
-        type: String,
-        trim: true
+        type: String
     },
     size: {
-        type: String,
-        trim: true
+        type: String
     },
     dob: {
-        type: Date,
-        default: Date.now
+        type: Date
     }
 });
 //create mongoose models for schema
 var Animal = mongoose.model('Animal', AnimalSchema);
+module.exports = Animal;

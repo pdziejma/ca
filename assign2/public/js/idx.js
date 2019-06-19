@@ -71,28 +71,36 @@ for (let i = 0; i < get_animals.length; i++) {
     cell.innerHTML = get_animals[i].dob;
 
     //for removing animals
+    /*
     var remove_btn = document.createElement("input");
     remove_btn.setAttribute("type", "button");
-    remove_btn.setAttribute("method", "delete");
-    remove_btn.setAttribute("action", "/:AnimalId");
     remove_btn.setAttribute("value", "Remove");
     remove_btn.setAttribute("id", "remove btn");
     remove_btn.addEventListener("click", deleteAnimal());
     row.appendChild(remove_btn);
+    */
 }
-
-//event listener for form, should eventually move html to here
-document.getElementById("submit btn").addEventListener("click", addAnimal());
-
-//adding to db
-function addAnimal() {
+/*
+    let formelements = document.getElementById("animaladdform").elements;
+    let newName = formelements[0].value;
+    let newColor = formelements[1].value;
+    let newSize = formelements[2].value;
+    let newDOB = formelements[3].value;
+    let data = {
+        'name': newName,
+        'color': newColor,
+        'size': newSize,
+        'dob': newDOB
+    }
+    JSON.parse(data);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            
         }
     };
     xhttp.open("POST", "/animals", true);
-    xhttp.send();
-}
+    xhttp.send(data);
+//deleting from db
 function deleteAnimal() {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -102,3 +110,4 @@ function deleteAnimal() {
     xhttp.open("DELETE", "/:AnimalId", true);
     xhttp.send();
 }
+*/

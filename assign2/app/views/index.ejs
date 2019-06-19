@@ -20,17 +20,19 @@
         </div>
 
         <div>
-            <form action = "/animals" method = "post">
-                <input type="text" name="name">
-                <input type="text" name="color">
-                <input type="text" name="size">
-                <input id = "submit btn" type="submit" value="Submit">
+            <form id ="animaladdform">
+                <input type="text" name="name" id ="nameid">
+                <input type="text" name="color" id = "colorid">
+                <input type="text" name="size" id = "sizeid">
+                <input type="text" name="dob" id = "dobid">
+                <button type = "button" id = "submitbtn">Submit</button>
             </form>
         </div>
         
         <div id = "dynamicTable"></div>
-
-        <script type ="text/javascript"></script>
-        <script type = "text/javascript" src = "js/idx.js"</source></script>
+        <!--
+        <script type = "text/javascript" src = "js/idx.js"> </script>
+            -->
+        <script type = "text/javascript" src = "js/addButton.js"> </script>
     </body>
 </html>

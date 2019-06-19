@@ -4,9 +4,9 @@ module.exports = function(app) {
     app.route('/animals')
         .post(animals.create)
         .get(animals.list);
-    app.route('/:AnimalId')
+    app.route('/:animalId')
         .get(animals.read)
         .put(animals.update)
         .delete(animals.delete);
-    app.param('AnimalId', animals.animalByID);
+    app.param('animalId', animals.animalByID);
 };
