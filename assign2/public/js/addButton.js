@@ -33,6 +33,7 @@ document.getElementById('addButton').addEventListener('click', function() {
         'dob': newDob
     }
     //adding it to the database
+    var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "http://localhost:3000/animals/", true);
     //always gonna be this type of data for this app
     xhttp.setRequestHeader("Content-type", "application/json");
@@ -79,7 +80,6 @@ document.getElementById('addButton').addEventListener('click', function() {
             'dob': delDob
         }
         //delete from database
-        var xhttp = new XMLHttpRequest();
         xhttp.open("DELETE", "http://localhost:3000/animals/" + delId, true);
         //always gonna be this type of data for this app
         xhttp.setRequestHeader("Content-type", "application/json");
