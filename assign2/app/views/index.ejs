@@ -6,33 +6,19 @@
     <body>
         <h1><%= title %></h1>
         <label>List of Animals:</label>
-
-        <form class="new" method="post">
-            <div id="dynamicInput"></div>
-        </form>
-
-        <p id = "p1">
-                Select an animal to see its description.
-        </p>
-
+        <div id="dynamicInput"></div>
+        <p id = "p1">Select an animal to see its description.</p>
         <div>
             <p1><%= paragraph %></p1>
         </div>
-
         <div>
-            <form id ="animaladdform">
-                <input type="text" name="name" id ="nameid">
-                <input type="text" name="color" id = "colorid">
-                <input type="text" name="size" id = "sizeid">
-                <input type="text" name="dob" id = "dobid">
-                <button type = "button" id = "submitbtn">Submit</button>
-            </form>
+            <form id ="animalAddForm"></form>
         </div>
-        
         <div id = "dynamicTable"></div>
-        <!--
-        <script type = "text/javascript" src = "js/idx.js"> </script>
-            -->
+
+        <script type = "text/javascript" src = "js/dropDown.js"> </script>
         <script type = "text/javascript" src = "js/addButton.js"> </script>
+        <script type = "text/javascript" src = "js/table.js"> </script>
+        <script type = "text/javascript" src = "js/deleteButton.js"> </script>
     </body>
 </html>

@@ -3,13 +3,16 @@ var mongoose = require('mongoose'),
  //schema for animal    
 var AnimalSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        trim: true
     },
     color: {
-        type: String
+        type: String,
+        trim: true
     },
     size: {
-        type: String
+        type: String,
+        trim: true
     },
     dob: {
         type: Date
