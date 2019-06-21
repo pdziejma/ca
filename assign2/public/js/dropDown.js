@@ -1,4 +1,5 @@
 //getting the animals, might need to change back to other way
+/*
 var getAnimals;
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
@@ -8,6 +9,7 @@ xhttp.onreadystatechange = function() {
 };
 xhttp.open("GET", '/animals', false);
 xhttp.send();
+*/
 //replaces p1 with text for selected animal
 function getDesc() {
     const sel = document.getElementById("select");

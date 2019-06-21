@@ -34,15 +34,6 @@ function addEvent() {
 
             //delete from table
             removeElement("row" + i);
-            
-            //updating getAnimals variable? seems wrong to me to do this everytime there is a change    
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    getAnimals = JSON.parse(this.responseText);
-                }
-            };
-            xhttp.open("GET", '/animals', false);
-            xhttp.send();
         });
     }
 }

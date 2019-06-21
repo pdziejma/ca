@@ -25,17 +25,6 @@ document.getElementById('addButton').addEventListener('click', function() {
     let newSize = formElements[2].value;
     let newDob = formElements[3].value;
 
-    //updating getAnimals variable? seems wrong to me to do this everytime there is a change
-    var xhttp = new XMLHttpRequest();  
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            getAnimals = JSON.parse(this.responseText);
-        }
-    };
-    xhttp.open("GET", '/animals', false);
-    xhttp.send();
-
-
     //json object following model
     let data = {
         'name': newName,
@@ -74,15 +63,6 @@ document.getElementById('addButton').addEventListener('click', function() {
     deleteButton.setAttribute("type", "button");
     deleteButton.setAttribute("value", "Delete");
     deleteButton.setAttribute("id", "deleteButton" + getAnimals.length);
-
-    //updating getAnimals variable? seems wrong to me to do this everytime there is a change    
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            getAnimals = JSON.parse(this.responseText);
-        }
-    };
-    xhttp.open("GET", '/animals', false);
-    xhttp.send();
 
     //call function for delete to add event listener to new delete button
     deleteButton.addEventListener("click", function() {
