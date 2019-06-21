@@ -24,7 +24,6 @@ document.getElementById('addButton').addEventListener('click', function() {
     let newColor = formElements[1].value;
     let newSize = formElements[2].value;
     let newDob = formElements[3].value;
-
     //json object following model
     let data = {
         'name': newName,
@@ -33,22 +32,32 @@ document.getElementById('addButton').addEventListener('click', function() {
         'dob': newDob
     }
     //adding it to the database
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "http://localhost:3000/animals/", true);
+    var xhttp1 = new XMLHttpRequest();
+    xhttp1.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var newAnimal = JSON.parse(this.response)
+            getAnimals.push(newAnimal);
+        }
+    };
+
+    xhttp1.open("POST", "http://localhost:3000/animals/", true);
     //always gonna be this type of data for this app
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(JSON.stringify(data));
+    xhttp1.setRequestHeader("Content-type", "application/json");
+    xhttp1.send(JSON.stringify(data));
+
+    //id for all additional elements
+    var currId = getAnimals.length;
 
     //adding it to the drop down list
     option = document.createElement("option");
     txt = document.createTextNode(newName);
     option.appendChild(txt);
-    option.setAttribute("id", "option" + getAnimals.length);
+    option.setAttribute("id", "option" + currId);
     newSelect.insertBefore(option, newSelect.lastChild);
 
     //adding it to the table
     row = table.insertRow(-1);
-    row.setAttribute("id", "row" + getAnimals.length);
+    row.setAttribute("id", "row" + currId);
     var cell = row.insertCell(-1);
     cell.innerHTML = newName;
     cell = row.insertCell(-1);
@@ -58,12 +67,13 @@ document.getElementById('addButton').addEventListener('click', function() {
     cell = row.insertCell(-1);
     cell.innerHTML = newDob;
 
+
     //adding a new delete button
     var deleteButton = document.createElement("input");
     deleteButton.setAttribute("class", "dltBtn");
     deleteButton.setAttribute("type", "button");
     deleteButton.setAttribute("value", "Delete");
-    deleteButton.setAttribute("id", "deleteButton" + getAnimals.length);
+    deleteButton.setAttribute("id", "deleteButton" + currId);
 
     //call function for delete to add event listener to new delete button
     deleteButton.addEventListener("click", function() {
@@ -79,18 +89,30 @@ document.getElementById('addButton').addEventListener('click', function() {
             'size': delSize,
             'dob': delDob
         }
+        var delAnimal = JSON.stringify(data);
         //delete from database
-        xhttp.open("DELETE", "http://localhost:3000/animals/" + delId, true);
+        var xhttp2 = new XMLHttpRequest();
+        xhttp2.open("DELETE", "http://localhost:3000/animals/" + delId, true);
         //always gonna be this type of data for this app
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(JSON.stringify(data));
+        xhttp2.setRequestHeader("Content-type", "application/json");
+        xhttp2.send(delAnimal);
 
         //delete from dropdown
-        console.log(getAnimals.length - 1);
-        removeElement("option" + (getAnimals.length - 1));
-
+        removeElement("option" + ind);
         //delete from table
-        removeElement("row" + (getAnimals.length - 1));
+        removeElement("row" + ind);
+
+        //adjust ids of list
+        for (let j = parseInt(ind) + 1; j < getAnimals.length; j++) {
+            //adjusts dropdown option id
+            document.getElementById("option" + j).id = "option" + (j-1);
+            //adjusts row id
+            document.getElementById("row" + j).id = "row" + (j-1);
+            //adjusts deletebutton id
+            document.getElementById("deleteButton" + j).id = "deleteButton" + (j-1);
+        }
+        //delete from getAnimals array
+        getAnimals.splice(ind, 1);
     });
     row.appendChild(deleteButton);
 });
