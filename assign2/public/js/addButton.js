@@ -1,5 +1,3 @@
-//FIX: Something with adding and deleting animals is not working
-
 //makes the inputs and buttons of the form
 const addForm = document.getElementById("animalAddForm");
 const nameInput = document.createElement("input");
