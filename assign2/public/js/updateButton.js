@@ -28,13 +28,14 @@ function addUpdEvent() {
 
             //event listener to submit the update changes
             subButton.addEventListener("click", function() {
+                //pulling new values from inputs
                 let updName = document.getElementById("Name").value;
                 let updColor = document.getElementById("Color").value;
                 let updSize = document.getElementById("Size").value;
                 let updDob = document.getElementById("Date of Birth").value;
+                //getting old id value to know which to update
                 let updId = getAnimals[ind]._id;
-                console.log(updName);
-                console.log(updId);
+                //making data object to send
                 let data = {
                     '_id': updId,
                     'name': updName,
@@ -42,13 +43,18 @@ function addUpdEvent() {
                     'size': updSize,
                     'dob': updDob
                 }
-                var updAnimal = JSON.stringify(data);
                 //update database
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("UPDATE", "http://localhost:3000/animals/" + updId, true);
+                var xhttp2 = new XMLHttpRequest();
+                xhttp2.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var updAnimal = JSON.parse(this.response);
+                        getAnimals.splice(ind, 1, updAnimal);
+                    }
+                };
+                xhttp2.open("UPDATE", "http://localhost:3000/animals/" + updId, true);
                 //always gonna be this type of data for this app
-                xhttp.setRequestHeader("Content-type", "application/json");
-                xhttp.send(updAnimal);
+                xhttp2.setRequestHeader("Content-type", "application/json");
+                xhttp2.send(JSON.stringify(data));
 
                 //delete old row of textboxes
 
@@ -61,4 +67,3 @@ function addUpdEvent() {
         });
     }
 }
-        

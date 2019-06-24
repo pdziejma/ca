@@ -33,7 +33,7 @@ document.getElementById('addButton').addEventListener('click', function() {
     var xhttp1 = new XMLHttpRequest();
     xhttp1.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var newAnimal = JSON.parse(this.response)
+            var newAnimal = JSON.parse(this.response);
             getAnimals.push(newAnimal);
         }
     };
