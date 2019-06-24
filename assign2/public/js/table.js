@@ -29,6 +29,7 @@ for (let i = 0; i < getAnimals.length; i++) {
     cell.innerHTML = getAnimals[i].size;
     cell = row.insertCell(-1);
     cell.innerHTML = getAnimals[i].dob;
+
     //creating delete buttons
     var deleteButton = document.createElement("input");
     deleteButton.setAttribute("class", "dltBtn");
@@ -36,4 +37,12 @@ for (let i = 0; i < getAnimals.length; i++) {
     deleteButton.setAttribute("value", "Delete");
     deleteButton.setAttribute("id", "deleteButton" + i);
     row.appendChild(deleteButton);
+
+    //creating delete buttons
+    var updateButton = document.createElement("input");
+    updateButton.setAttribute("class", "updBtn");
+    updateButton.setAttribute("type", "button");
+    updateButton.setAttribute("value", "Update");
+    updateButton.setAttribute("id", "updateButton" + i);
+    row.appendChild(updateButton);
 }

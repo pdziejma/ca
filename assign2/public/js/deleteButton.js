@@ -5,7 +5,7 @@ function removeElement(elementId) {
 }
 
 //a function to add the eventlistener to all delete buttons
-function addEvent() {
+function addDelEvent() {
     var bns = document.getElementsByClassName("dltBtn");
     for (let i = 0; i < bns.length; i++) {
         bns[i].addEventListener("click", function() {
@@ -53,5 +53,6 @@ function addEvent() {
 }
 //adds eventlistener to all buttons
 window.addEventListener("load", function() {
-    addEvent();
+    addDelEvent();
+    addUpdEvent();
 });

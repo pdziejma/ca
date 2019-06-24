@@ -51,6 +51,7 @@ document.getElementById('addButton').addEventListener('click', function() {
     txt = document.createTextNode(newName);
     option.appendChild(txt);
     option.setAttribute("id", "option" + currId);
+    option.setAttribute("value", currId);
     newSelect.insertBefore(option, newSelect.lastChild);
 
     //adding it to the table
@@ -64,7 +65,6 @@ document.getElementById('addButton').addEventListener('click', function() {
     cell.innerHTML = newSize;
     cell = row.insertCell(-1);
     cell.innerHTML = newDob;
-
 
     //adding a new delete button
     var deleteButton = document.createElement("input");
