@@ -67,50 +67,8 @@ document.getElementById('addButton').addEventListener('click', function() {
     cell.innerHTML = newDob;
 
     //adding a new delete button
-    var deleteButton = document.createElement("input");
-    deleteButton.setAttribute("class", "dltBtn");
-    deleteButton.setAttribute("type", "button");
-    deleteButton.setAttribute("value", "Delete");
-    deleteButton.setAttribute("id", "deleteButton" + currId);
+    dButtonMaker(row, currId);
 
-    //call function for delete to add event listener to new delete button
-    deleteButton.addEventListener("click", function() {
-        let ind = this.id.replace(/\D+/g, '');
-        let delName = getAnimals[ind].name;
-        let delColor = getAnimals[ind].color;
-        let delSize = getAnimals[ind].size;
-        let delDob = getAnimals[ind].dob;
-        let delId = getAnimals[ind]._id;
-        let data = {
-            'name': delName,
-            'color': delColor,
-            'size': delSize,
-            'dob': delDob
-        }
-        var delAnimal = JSON.stringify(data);
-        //delete from database
-        var xhttp2 = new XMLHttpRequest();
-        xhttp2.open("DELETE", "http://localhost:3000/animals/" + delId, true);
-        //always gonna be this type of data for this app
-        xhttp2.setRequestHeader("Content-type", "application/json");
-        xhttp2.send(delAnimal);
-
-        //delete from dropdown
-        removeElement("option" + ind);
-        //delete from table
-        removeElement("row" + ind);
-
-        //adjust ids of list
-        for (let j = parseInt(ind) + 1; j < getAnimals.length; j++) {
-            //adjusts dropdown option id
-            document.getElementById("option" + j).id = "option" + (j-1);
-            //adjusts row id
-            document.getElementById("row" + j).id = "row" + (j-1);
-            //adjusts deletebutton id
-            document.getElementById("deleteButton" + j).id = "deleteButton" + (j-1);
-        }
-        //delete from getAnimals array
-        getAnimals.splice(ind, 1);
-    });
-    row.appendChild(deleteButton);
+    //adding a new update button
+    uButtonMaker(row,currId);
 });

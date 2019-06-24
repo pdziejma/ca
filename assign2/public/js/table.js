@@ -1,3 +1,25 @@
+//function to make a delete button
+function dButtonMaker(rowEl, rowi) {
+    var deleteButton = document.createElement("input");
+    deleteButton.setAttribute("class", "dltBtn");
+    deleteButton.setAttribute("type", "button");
+    deleteButton.setAttribute("value", "Delete");
+    deleteButton.setAttribute("id", "deleteButton" + rowi);
+    deleteButton.addEventListener("click", delEvent);
+    rowEl.appendChild(deleteButton);
+}
+
+//function to make an update button
+function uButtonMaker(rowEl, rowi) {
+    var updateButton = document.createElement("input");
+    updateButton.setAttribute("class", "updBtn");
+    updateButton.setAttribute("type", "button");
+    updateButton.setAttribute("value", "Update");
+    updateButton.setAttribute("id", "updateButton" + rowi);
+    updateButton.addEventListener("click", updEvent);
+    rowEl.appendChild(updateButton);
+}
+
 //making a table
 const table = document.createElement("TABLE");
 table.border = "1";
@@ -31,18 +53,8 @@ for (let i = 0; i < getAnimals.length; i++) {
     cell.innerHTML = getAnimals[i].dob;
 
     //creating delete buttons
-    var deleteButton = document.createElement("input");
-    deleteButton.setAttribute("class", "dltBtn");
-    deleteButton.setAttribute("type", "button");
-    deleteButton.setAttribute("value", "Delete");
-    deleteButton.setAttribute("id", "deleteButton" + i);
-    row.appendChild(deleteButton);
+    dButtonMaker(row, i);
 
-    //creating delete buttons
-    var updateButton = document.createElement("input");
-    updateButton.setAttribute("class", "updBtn");
-    updateButton.setAttribute("type", "button");
-    updateButton.setAttribute("value", "Update");
-    updateButton.setAttribute("id", "updateButton" + i);
-    row.appendChild(updateButton);
+    //creating update buttons
+    uButtonMaker(row, i);
 }
