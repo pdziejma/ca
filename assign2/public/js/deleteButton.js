@@ -35,7 +35,8 @@ function delEvent() {
 
     //adjust ids of list
     for (let j = parseInt(ind) + 1; j < getAnimals.length; j++) {
-        //adjusts dropdown option id
+        //adjusts dropdown option value and id
+        document.getElementById("option" + j).value = j-1;
         document.getElementById("option" + j).id = "option" + (j-1);
         //adjusts row id
         if (document.getElementById("row" + j) == null) {
