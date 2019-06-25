@@ -38,9 +38,26 @@ function delEvent() {
         //adjusts dropdown option id
         document.getElementById("option" + j).id = "option" + (j-1);
         //adjusts row id
-        document.getElementById("row" + j).id = "row" + (j-1);
-        //adjusts deletebutton id
-        document.getElementById("deleteButton" + j).id = "deleteButton" + (j-1);
+        if (document.getElementById("row" + j) == null) {
+            //if rows following are being updated
+            //adjusts row id
+            document.getElementById("newRow" + j).id = "newRow" + (j-1);
+            //adjusts user input ids
+            document.getElementById("Name" + j).id = "Name" + (j-1);
+            document.getElementById("Color" + j).id = "Color" + (j-1);
+            document.getElementById("Size" + j).id = "Size" + (j-1);
+            document.getElementById("Date of Birth" + j).id = "Date of Birth" + (j-1);
+            //adjusts submit button id
+            document.getElementById("subButton" + j).id = "subButton" + (j-1);
+        } else {
+            //else if they are not being updated
+            //adjusts row id
+            document.getElementById("row" + j).id = "row" + (j-1);
+            //adjusts deletebutton id
+            document.getElementById("deleteButton" + j).id = "deleteButton" + (j-1);
+            //adjusts update button id
+            document.getElementById("updateButton" + j).id = "updateButton" + (j-1);
+        }
     }
 
     //delete from getAnimals array
