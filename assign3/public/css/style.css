@@ -1,0 +1,62 @@
+body {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    white-space: nowrap;
+    margin-top: 75px;
+}
+  
+th, td {
+    text-align: center;
+    width: 25%;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+  
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody>tr>:nth-child(5) {
+    text-align:center;
+}
+
+select {
+    border-color: black;
+    border-radius: 4px;
+}
+
+input[type=button], button {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+button {
+    position: absolute;
+    right: 120px;
+}
+
+input[type=text] {
+    width: 85%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
