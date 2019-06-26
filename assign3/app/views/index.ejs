@@ -6,23 +6,24 @@
     <body>
         <h1><%= title %></h1>
         <label>List of Animals:</label>
-        <div id="dynamicInput"></div>
-        <p id = "p1">Select an animal to see its description.</p>
+        <div id='dynamicInput'></div>
+        <p id = 'p1'>Select an animal to see its description.</p>
         <div>
             <p1><%= paragraph %></p1>
         </div>
         <div>
-            <form id ="animalAddForm"></form>
+            <form id ='animalAddForm'></form>
         </div>
-        <div id = "dynamicTable"></div>
+        <div id = 'dynamicTable'></div>
 
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel='stylesheet' type='text/css' href='css/style.css'>
         <script> var getAnimals = <%- JSON.stringify(animals) %>;</script>
 
-        <script type = "text/javascript" src = "js/dropDown.js"> </script>
-        <script type = "text/javascript" src = "js/deleteButton.js"> </script>
-        <script type = "text/javascript" src = "js/updateButton.js"> </script>
-        <script type = "text/javascript" src = "js/addButton.js"> </script>
-        <script type = "text/javascript" src = "js/table.js"> </script>
+        <script src = 'js/jquery.js'></script>
+        <script type = 'text/javascript' src = 'js/dropDown.js'> </script>
+        <script type = 'text/javascript' src = 'js/deleteButton.js'> </script>
+        <script type = 'text/javascript' src = 'js/updateButton.js'> </script>
+        <script type = 'text/javascript' src = 'js/addButton.js'> </script>
+        <script type = 'text/javascript' src = 'js/table.js'> </script>
     </body>
 </html>

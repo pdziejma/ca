@@ -47,7 +47,7 @@ input[type=button], button {
 }
 button {
     position: absolute;
-    right: 120px;
+    right: 250px;
 }
 
 input[type=text] {
