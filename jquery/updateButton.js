@@ -14,7 +14,7 @@ function subEvent() {
     let updName = $( '#newName' + ind ).val();
     let updColor = $( '#newColor' + ind ).val();
     let updSize = $( '#newSize' + ind ).val();
-    let updDob = $( 'newDob' + ind ).val();
+    let updDob = $( '#newDob' + ind ).val();
     //getting old id value to know which to update
     let updId = animalArr[ ind ]._id;
     //making data object to send
