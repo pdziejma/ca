@@ -1,33 +1,33 @@
 //makes the inputs and buttons of the form
 //name input
-const nameInput = $('<input></input>');
-nameInput.attr('placeholder', 'Name');
-nameInput.attr('type', 'text');
-$('#animalAddForm').append(nameInput);
+const nameInput = $( '<input></input>' )
+    .attr( 'placeholder', 'Name' )
+    .attr( 'type', 'text' )
+    .appendTo( $( '#animalAddForm' ) );
 //color input
-const colorInput = $('<input></input>');
-colorInput.attr('placeholder', 'Color');
-colorInput.attr('type', 'text');
-$('#animalAddForm').append(colorInput);
+const colorInput = $( '<input></input>' )
+    .attr( 'placeholder', 'Color' )
+    .attr( 'type', 'text' )
+    .appendTo( $( '#animalAddForm' ) );
 //size input
-const sizeInput = $('<input></input>');
-sizeInput.attr('placeholder', 'Size');
-sizeInput.attr('type', 'text');
-$('#animalAddForm').append(sizeInput);
-//date of birth input   
-const dobInput = $('<input></input>');
-dobInput.attr('placeholder', 'Date of Birth');
-dobInput.attr('type', 'text');
-$('#animalAddForm').append(dobInput);
+const sizeInput = $( '<input></input>' )
+    .attr( 'placeholder', 'Size' )
+    .attr( 'type', 'text' )
+    .appendTo( $( '#animalAddForm' ) );
+//Dob input
+const dobInput = $( '<input></input>' )
+    .attr( 'placeholder', 'Dob' )
+    .attr( 'type', 'text' )
+    .appendTo( $( '#animalAddForm' ) );
 //submit button input
-const addButton = $('<input></input>');
-addButton.attr('id', 'addButton');
-addButton.attr('type', 'button');
-addButton.attr('value', 'Submit');
-$('#animalAddForm').append(addButton);
+const addButton = $( '<input></input>' )
+    .attr( 'id', 'addButton' )
+    .attr( 'type', 'button' )
+    .attr( 'value', 'Submit' )
+    .appendTo( $( '#animalAddForm' ) );
 
 //event listener for form with jquery
-$('#addButton').click(function() {
+$( '#addButton' ).click( function() {
     //variables for form values
     var newName = nameInput.val();
     let newColor = colorInput.val();
@@ -35,59 +35,62 @@ $('#addButton').click(function() {
     let newDob = dobInput.val();
     //json object following model
     let data = {
-        'name': newName,
-        'color': newColor,
-        'size': newSize,
-        'dob': newDob
+        'name' : newName,
+        'color' : newColor,
+        'size' : newSize,
+        'dob' : newDob
     }
     //adding it to the database with jquery
-    $.post('http://localhost:3000/animals/', data, function (data) {
+    $.post( 'http://localhost:3000/animals/', data, function ( data ) {
         //adding to animalArr array
-        animalArr.push(data);
-    }, 'JSON');
+        animalArr.push( data );
+    }, 'JSON' );
 
     //id for all additional elements
     var currId = animalArr.length;
 
     //adding it to the drop down list
-    option = $('<option id =option' + currId + '>' + newName + '</option>');
-    $('#select').append(option);
-    //FIX: with jquery
-    //adding it to the table
-    row = $('<tr></tr>').appendTo($('#animTable'));
-    row.attr('id', 'row' + currId);
-    let d = new Date(newDob);
-    let displayDate = d.toLocaleDateString();
-    row.append(
-        '<td id = name' + i + '>' + newName +
-        '</td><td id = color' + i + '>' + newColor +
-        '</td><td id = size' + i + '>' + newSize +
-        '</td><td id = dob' + i + '>' + displayDate + '</td>');
+    option = $( '<option></option>' )
+        .attr( 'id', 'option' + currId )
+        .appendTo( $( '#select' ) )
+        .html( newName );
+
+    //display date for table
+    let displayDate = new Date( newDob ).toLocaleDateString();
+    //storing row details
+    let currCells = [ newName, newColor, newSize, displayDate ];
+    
+    //creating new table row
+    let row = $( '<tr></tr>' )
+        .attr( 'id', 'row' + currId )
+        .appendTo( $( '#animTable' ) );
+
+    //filling table row
+    for ( let j = 0; j < colCount; j++ ) {
+
+        //new update boxes
+        $( '<input></input>' )
+            .attr( 'id', 'new' + colHead[ j ] + currId )
+            .attr( 'class', 'update' + currId )
+            .val( currCells[ j ] )
+            .appendTo( row )
+            .hide();
+
+        //new display information
+        $( '<td></td>' )
+            .attr( 'id', colHead[ j ] + currId )
+            .attr( 'class', 'display' + currId )
+            .text( currCells[ j ] )
+            .appendTo( row );
+    }
 
     //adding a new delete button
-    buttonMaker($('#row' + currId), currId, 'delete');
+    buttonMaker( $( '#row' + currId), currId, 'delete' );
 
     //adding a new update button
-    buttonMaker($('#row' + currId), currId, 'update');
+    buttonMaker( $( '#row' + currId), currId, 'update' );
 
-    //saving info from new cells
-    var currCells = [newName, newColor, newSize, displayDate];
-
-    //new row for updating
-    row = $('<tr></tr>').appendTo($('#animTable'));
-    row.attr('id', 'newRow' + currId);
-    //hide row until button is pressed
-    $('#newRow' + currId).hide();
-
-    //creating text boxes to update row
-    for (let j = 0; j < colCount; j++) {
-        let newInput = $('<input type = "text"></input>');
-        newInput.attr('id', 'new' + colHead[j] + currId);
-        newInput.val(currCells[j]);
-        let cell = $('<td></td>');
-        cell.append(newInput);
-        row.append(cell);
-    }
     //creating submit update button
-    buttonMaker($('#newRow' + currId), currId, 'submit');
+    buttonMaker( $ ( '#row' + currId ), currId, 'submit' );
+
 });
